@@ -83,3 +83,72 @@ p1 <- ggplot(herbivory_data_long, aes(x = X_value, y = Herbivory, color = Specie
   theme(legend.position = "top")  # Position legend at the top
 
 p1
+
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+
+# Original data
+herbivory_data <- data.frame(
+  X_value = c(0, 0.1, 1.00, 4.00),
+  LAK = c(0.07, 0.06, 3.69, 5.46),
+  TOM = c(0.01, 0.34, 5.58, 7.73),
+  BUB = c(1.46, 1.19, 5.74, 6.86),
+  KAK = c(4.09, 4.53, 6.09, 7.46),
+  DRO = c(4.46, 5.62, 7.09, 7.48),
+  EUC = c(1.77, 2.98, 5.26, 7.28)
+)
+
+# Reshape to long format
+herbivory_data_long <- herbivory_data %>%
+  pivot_longer(cols = -X_value, names_to = "Species", values_to = "Herbivory")
+
+# Create a 'Group' column to split into two line segments
+herbivory_data_long <- herbivory_data_long %>%
+  mutate(
+    Segment = case_when(
+      X_value %in% c(0, 1.00) ~ "Segment1",
+      X_value %in% c(0.1, 4.00) ~ "Segment2",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(Segment))
+
+# Site-specific aesthetics
+site_symbols <- c(LAK = 17, TOM = 16, BUB = 15, KAK = 17, DRO = 16, EUC = 15)
+site_colors  <- c(LAK = "blue", TOM = "turquoise", BUB = "yellowgreen", KAK = "orange", DRO = "red", EUC = "purple")
+
+# Plot
+p <- ggplot(herbivory_data_long, aes(x = X_value, y = Herbivory, group = interaction(Species, Segment))) +
+  geom_line(aes(color = Species, linetype = Segment), size = 1.5) +
+  geom_point(aes(shape = Species, color = Species), size = 4) +
+  scale_shape_manual(values = site_symbols) +
+  scale_color_manual(values = site_colors) +
+  scale_linetype_manual(values = c(Segment1 = "dashed", Segment2 = "solid")) +  # Dashed for Segment1
+  scale_x_continuous(breaks = c(0, 0.1, 1.00, 4.00)) +
+  labs(
+    x = "Month\nSince the beginning of experiment",
+    y = "Mean herbivory damage (%)",
+    title = "Herbivory accumulation at study sites"
+  ) +
+  guides(linetype = "none") +  # 👈 Remove Segment legend
+  theme_minimal() +
+  theme(
+    text = element_text(size = 18),
+    axis.title.x = element_text(size = 16, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 16, margin = margin(r = 20)),
+    axis.text = element_text(size = 14),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 16),
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    plot.margin = margin(20, 20, 20, 20),
+    axis.line = element_line(size = 1, color = "black"),
+    axis.ticks = element_line(size = 1, color = "black"),
+    axis.ticks.length = unit(0.25, "cm"),
+    panel.grid.major = element_line(color = "grey90"),
+    panel.grid.minor = element_blank(),
+    legend.position = "top"
+  )
+
+print(p)
