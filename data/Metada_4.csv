@@ -1,0 +1,3 @@
+Colum_name,Example,Data_type,Explanation
+Site,BUB,Text/Factor,"Name of the site - one of the six possible sites (LAK, TOM, BUB, KAK, DRO, EUC)"
+PlantSpeciesAnal,Baccaurea_ramiflora,Text/Factor,Latine name of the plan species used for analyses and phylogeny

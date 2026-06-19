@@ -1,0 +1,14 @@
+Colum_name,Example,Data_type,Explanation
+Species,SP8,Text/Factor,Species code SP1 - SP16
+Experiment,1MO,Text/Factor,"Factor indicating whether the data belong to one months long experiment or four months long experiment (1MO, 4MO)"
+SpeciesAnal,Argyrodendron_peralatum,Text/Factor,Latine name of the plan species used for analyses and phylogeny
+Site,DRO,Text/Factor,"Name of the site - one of the six possible sites (LAK, TOM, BUB, KAK, DRO, EUC)"
+TwigCodeNoPatrol,DRO_Argyrodendron_peralatum_1CN1_White,Text/Factor,Code consisting of Site_SpeaciesAnal_IndividualTreatment_Twig
+BranchCodeNoPatrol,DRO_Argyrodendron_peralatum_1CN1,Text/Factor,Code consisting of Site_SpeaciesAnal_IndividualTreatment
+Patrol,A,Text/Factor,"Patrols are coded as A-B, C-D. A and C are beginnings of the season in each surveyed year. B and D are resampled leaves at the end of the season. Difference between B and A is the change in herbivory damage in that given year (ither after 1month or 4 months)"
+TwigArea_sum,939.68962,Numeric,Sum of the leaf area (Area.x) per individual twigs (out of 10 leaves per each twig)
+TwigHerbivory_sum,72.2757,Numeric,Sum of the Herbivory per individual twigs (out of 10 leaves per each twig)
+TwigHerbProp,0.076914439,Numeric,"Proportion of the leaf area eaten by herbivores, calculated as TwigHerbivory_sum/TwigArea_sum"
+StartEndDiff,NA,Numeric,"Differnce in herbivory since the beginning of the experiment. NA for patrols A, C as these are starts of the experiment, numberoc values for patrold B and D"
+TwigCodeUnique,DRO_Argyrodendron_peralatum_1CN1_White_A,Text/Factor,Code consisting of Site_SpeaciesAnal_IndividualTreatment_Twig_Patrol
+SaplingCodeUnique,DRO_Argyrodendron_peralatum_1CN1_A,,Code consisting of Site_SpeaciesAnal_IndividualTreatment_Patrol

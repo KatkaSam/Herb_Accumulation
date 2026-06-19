@@ -1,0 +1,19 @@
+Colum_name,Example,Data_type,Explanation
+Site,DRO,Text/Factor,"Name of the site - one of the six possible sites (LAK, TOM, BUB, KAK, DRO, EUC)"
+Species,SP1,Text/Factor,Species code SP1 - SP16
+Strata,Understory,Text/Factor,Sample originating form canopy or understory
+Individual,1,Numeric,"Individual tree per species and strata, numbers 1 - 5"
+Treatment,CN1,Text/Factor,"Code for the treatment, CN1 or CN2, always meaning Control treatment (this comes as a code from larger project where more treatments have been involved)"
+Experiment,1MO,Text/Factor,"Factor indicating whether the data belong to one months long experiment or four months long experiment (1MO, 4MO)"
+Patrol,C,Text/Factor,"Patrols are coded as A-B, C-D. A and C are beginnings of the season in each surveyed year. B and D are resampled leaves at the end of the season. Difference between B and A is the change in herbivory damage in that given year (ither after 1month or 4 months)"
+XStart,492,Numeric,Coordinate indicating the Y position of that given leaf in scanned photo. Used only for summarization of the data and recornition of the leaves. 
+YStart,2081,Numeric,Coordinate indicating the X position of that given leaf in scanned photo. Used only for summarization of the data and recognition of the leaves. 
+Area.x,107.72718,Numeric,Leaf area INCLUDING holes.
+Area.y,107.72718,Numeric,Leaf area WITHOUT the holes
+Herbivory,0,Numeric,"Area.x - Area.y, i.e. actual leaf area eaten by insect herbivores. "
+HerbProp,0,Numeric,"Proportion of the leaf area eaten by herbivores, calculated as Herbivory/Area.x"
+Twig,Blue,Text/Factor,"Each tree individual had leaves sampled on three independent twigs, marked by coloured strings."
+SpeciesAnal,Dysoxylum_sp.,Text/Factor,Latine name of the plan species used for analyses and phylogeny
+SpeciesReal,Dysoxylum_sp.,Text/Factor,"Latine name of the plan species used for analyses and phylogeny - here in several cases, very close species were matched across canopy and understory as the given species did not occur in one strata"
+BranchPatrol,DRO_Dysoxylum_sp._1CN1_C,Text/Factor,Code consisting of Site_SpeaciesAnal_IndividualTreatment_Patrol
+TwigCode,DRO_Dysoxylum_sp._1CN1_C_Blue,Text/Factor,Code consisting of Site_SpeaciesAnal_IndividualTreatment_Patrol_Twig
